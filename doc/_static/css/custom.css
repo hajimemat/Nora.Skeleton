@@ -1,0 +1,10 @@
+/* カスタム
+ ============================ */
+
+.content:not(.custom) {
+    /* max-width: 100% */
+}
+
+.my-nav-content {
+    max-width: none !important;
+}
