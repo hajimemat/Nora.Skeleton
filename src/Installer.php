@@ -69,9 +69,9 @@ class Installer
                 return;
             }
             $contents = file_get_contents($filePath);
-            $contents = str_replace('__Vendor__', self::$vendor, $contents);
-            $contents = str_replace('__Package__', self::$project, $contents);
-            $contents = str_replace('__year__', date('y'), $contents);
+            $contents = str_replace('__Vendor__', ucfirst(self::$vendor), $contents);
+            $contents = str_replace('__Package__', ucfirst(self::normalizePackageName(self::$project)), $contents);
+            $contents = str_replace('__year__', date('Y'), $contents);
             $contents = str_replace('__name__', self::$name, $contents);
             file_put_contents($$filePath, $contents);
         };
