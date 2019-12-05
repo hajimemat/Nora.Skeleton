@@ -109,6 +109,9 @@ class Installer
             $composerJson['autoload']['files'],
             $composerJson['scripts']['pre-install-cmd'],
             $composerJson['scripts']['pre-update-cmd'],
+            $composerJson['scripts']['post-create-project-cmd'],
+            $composerJson['keywords'],
+            $composerJson['homepage'],
             $composerJson['require-dev']['composer/composer']
         );
         return $composerJson;
