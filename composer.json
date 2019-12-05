@@ -1,5 +1,5 @@
 {
-    "name": "avap/nora-php-skelton",
+    "name": "avap/nora-php-skeleton",
     "description": "Avap Style PHP Skelton",
     "type": "project",
     "license": "MIT",
@@ -18,8 +18,7 @@
         "friendsofphp/php-cs-fixer" : "^2.16",
         "phpmd/phpmd"               : "^2.7",
         "phpstan/phpstan-shim"      : "^0.11.19",
-        "theseer/phpdox"            : "^0.12.0",
-        "composer/composer"         : "^1.9"
+        "theseer/phpdox"            : "^0.12.0"
     },
     "autoload": {
         "psr-4": {
@@ -27,8 +26,12 @@
         }
     },
     "scripts": {
-        "pre-install-cmd": "Nora\\Skelton\\Installer::preInstall",
-        "pre-update-cmd": "Nora\\Skelton\\Installer::preInstall",
+        "pre-install-cmd": [
+            "Nora\\Skelton\\Installer::preInstall"
+        ],
+        "pre-update-cmd": [
+            "Nora\\Skelton\\Installer::preInstall"
+        ],
         "post-create-project-cmd": [
             "Nora\\Skelton\\Installer::postInstall",
             "composer update"
