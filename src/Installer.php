@@ -23,7 +23,7 @@ class Installer
         $io = $event->getIO();
         // 必要情報を取得
         self::$vendor      = self::ask($io, 'ベンダー名', 'Avap');
-        self::$project     = self::ask($io, 'プロジェクト名', 'Nora-PHP-Project');
+        self::$project     = self::ask($io, 'プロジェクト名', 'NoraSample');
         self::$name        = self::ask($io, '名前', self::getUserName());
         self::$email       = self::ask($io, 'メールアドレス', self::getUserEmail());
         self::$packageName = vsprintf(
@@ -68,8 +68,8 @@ class Installer
                 return;
             }
             $contents = file_get_contents($filePath);
-            $contents = str_replace('__Vendor__', ucfirst(self::$vendor), $contents);
-            $contents = str_replace('__Package__', ucfirst(self::normalizePackageName(self::$project)), $contents);
+            $contents = str_replace('__Vendor__', self::$vendor), $contents);
+            $contents = str_replace('__Package__', self::$project), $contents);
             $contents = str_replace('__year__', date('Y'), $contents);
             $contents = str_replace('__name__', self::$name, $contents);
             file_put_contents($filePath, $contents);
@@ -103,7 +103,11 @@ class Installer
                 ]
             ],
             'description' => '',
-            'autoload' => ['psr-4' => ["{$vendor}\\{$package}\\" => 'src/']],
+            'autoload' => [
+                'psr-4' => [
+                    "{$vendor}\\{$package}\\" => 'src/'
+                ]
+            ],
         ]);
         unset(
             $composerJson['autoload']['files'],

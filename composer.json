@@ -62,6 +62,7 @@
             "tools/php-cs-fixer fix -v src",
             "tools/phpcs --standard=phpcs.xml src"
         ],
+        "sphinx-preview": ["cd doc/ && make preview"],
         "serve": ["php -dzend_extension=xdebug.so -S 0.0.0.0:8080 -t public"]
     },
     "scripts-descriptions": {
