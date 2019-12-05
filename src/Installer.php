@@ -1,6 +1,6 @@
 <?php
 
-namespace Nora\Skelton;
+namespace Nora\Skeleton;
 
 use Composer\Factory;
 use Composer\IO\IOInterface;
@@ -46,6 +46,7 @@ class Installer
     {
         $skeltonRoot = dirname(__DIR__);
         self::recursiveJob("{$skeltonRoot}", self::rename());
+        copy($skeltonRoot.'/src/Skeleton.php', $skeltonRoot.'/src/'.self::$project.'.php');
     }
 
     private static function recursiveJob(string $path, callable $job) : void
