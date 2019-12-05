@@ -27,14 +27,12 @@
         }
     },
     "scripts": {
-        "pre-install-cmd": "Nora\\Skelton\\Composer::preInstall",
-        "pre-update-cmd": "Nora\\Skelton\\Composer::preInstall",
+        "pre-install-cmd": "Nora\\Skelton\\Installer::preInstall",
+        "pre-update-cmd": "Nora\\Skelton\\Installer::preInstall",
         "post-create-project-cmd": [
-            "Nora\\Skelton\\Composer::postInstall",
+            "Nora\\Skelton\\Installer::postInstall",
             "composer update"
         ],
-        "post-install-cmd": ["@setup"],
-        "post-update-cmd": ["@setup"],
         "setup": ["php bin/setup.php"],
         "test": ["./tools/phpunit"],
         "tests": [
