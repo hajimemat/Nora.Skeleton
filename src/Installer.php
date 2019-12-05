@@ -73,7 +73,7 @@ class Installer
             $contents = str_replace('__Package__', ucfirst(self::normalizePackageName(self::$project)), $contents);
             $contents = str_replace('__year__', date('Y'), $contents);
             $contents = str_replace('__name__', self::$name, $contents);
-            file_put_contents($$filePath, $contents);
+            file_put_contents($filePath, $contents);
         };
         return $jobRename;
     }
