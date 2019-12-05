@@ -33,14 +33,13 @@ class Installer
                 [self::$vendor, self::$project]
             )
         );
-        $io->write("<info>composer.json for ".self::$packageName."</info>");
         // Composer Jsonを書き換える
         $json = new JsonFile(Factory::getComposerFile());
         $composerJson = self::getComposerJson(self::$vendor, self::$project, self::$packageName, $json);
 
         // Update Json
-        // $json->write($composerJson);
-        $io->write("<info>composer.json for ".self::$packageName."} is created.\n</info>");
+        $json->write($composerJson);
+        $io->write("<info>composer.json for ".self::$packageName." is created.\n</info>");
     }
 
     public static function postInstall(Event $event) : void
