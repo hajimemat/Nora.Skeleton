@@ -1,0 +1,13 @@
+{
+    "name": "avap/nora-php-skelton",
+    "description": "Avap Style PHP Skelton",
+    "type": "project",
+    "license": "http://avap.co.jp/nora/license",
+    "authors": [
+        {
+            "name": "Hajime MATSUMOTO",
+            "email": "hajime.matsumoto@avap.co.jp"
+        }
+    ],
+    "require": {}
+}
