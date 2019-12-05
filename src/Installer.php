@@ -47,9 +47,13 @@ class Installer
         $skeltonRoot = dirname(__DIR__);
         self::recursiveJob("{$skeltonRoot}", self::rename());
         copy($skeltonRoot.'/src/Skeleton.php', $skeltonRoot.'/src/'.self::$project.'.php');
-        unlink($skeltonRoot.'/src/Skeleton.php');
         copy($skeltonRoot.'/tests/SkeletonTest.php', $skeltonRoot.'/tests/'.self::$project.'Test.php');
+
+        // いらないものを消す
+        unlink($skeltonRoot.'/README.md')
+        unlink($skeltonRoot.'/src/Skeleton.php');
         unlink($skeltonRoot.'/tests/SkeletonTest.php');
+        unlink(__FILE__);
     }
 
     private static function recursiveJob(string $path, callable $job) : void
