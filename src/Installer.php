@@ -73,7 +73,7 @@ class Installer
             $contents = str_replace('__Package__', self::$project, $contents);
             $contents = str_replace('__year__', date('y'), $contents);
             $contents = str_replace('__name__', self::$name, $contents);
-            echo $filePath."\n";
+            file_put_contents($$filePath, $contents);
         };
         return $jobRename;
     }
@@ -104,15 +104,14 @@ class Installer
                 ]
             ],
             'description' => '',
-            'autoload' => ['psr-4' => ["{$vendor}\\{$package}" => 'src/']],
+            'autoload' => ['psr-4' => ["{$vendor}\\{$package}\\" => 'src/']],
         ]);
-        // unset(
-        //     $composerJson['autoload']['files'],
-        //     $composerJson['scripts']['pre-install-cmd'],
-        //     $composerJson['scripts']['pre-update-cmd'],
-        //     $composerJson['scripts']['post-create-project-cmd'],
-        //     $composerJson['require-dev']['composer/composer']
-        // );
+        unset(
+            $composerJson['autoload']['files'],
+            $composerJson['scripts']['pre-install-cmd'],
+            $composerJson['scripts']['pre-update-cmd'],
+            $composerJson['require-dev']['composer/composer']
+        );
         return $composerJson;
     }
 
