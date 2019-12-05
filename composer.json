@@ -1,6 +1,6 @@
 {
-    "name": "avap/nora-php-skeleton",
-    "description": "Avap Style PHP Project Skelton",
+    "name": "avap/nora-skeleton",
+    "description": "Avap Style Project Skelton",
     "type": "project",
     "license": "MIT",
     "authors": [
