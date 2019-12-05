@@ -48,8 +48,8 @@ class Installer
         self::recursiveJob("{$skeltonRoot}", self::rename());
         copy($skeltonRoot.'/src/Skeleton.php', $skeltonRoot.'/src/'.self::$project.'.php');
         unlink($skeltonRoot.'/src/Skeleton.php');
-        copy($skeltonRoot.'/tests/'.self::$project.'.php', $skeltonRoot.'/tests/'.self::$project.'.php');
-        unlink($skeltonRoot.'/tests/'.self::$project.'.php');
+        copy($skeltonRoot.'/tests/SkeletonTest.php', $skeltonRoot.'/tests/'.self::$project.'Test.php');
+        unlink($skeltonRoot.'/tests/SkeletonTest.php');
     }
 
     private static function recursiveJob(string $path, callable $job) : void
