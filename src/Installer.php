@@ -127,7 +127,7 @@ class Installer
 
     private static function normalizePackageName(string $name) : string
     {
-        return strtolower($name);
+        return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $name));
     }
 
     private static function getUserName() : string
