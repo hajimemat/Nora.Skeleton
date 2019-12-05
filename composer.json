@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Nora\\Skelton\\": "src/"
+            "Nora\\Skeleton\\": "src/"
         }
     },
     "scripts": {
