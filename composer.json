@@ -2,12 +2,78 @@
     "name": "avap/nora-php-skelton",
     "description": "Avap Style PHP Skelton",
     "type": "project",
-    "license": "http://avap.co.jp/nora/license",
+    "license": "MIT",
     "authors": [
         {
             "name": "Hajime MATSUMOTO",
             "email": "hajime.matsumoto@avap.co.jp"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit"           : "^8.4",
+        "squizlabs/php_codesniffer" : "^3.5",
+        "friendsofphp/php-cs-fixer" : "^2.16",
+        "phpmd/phpmd"               : "^2.7",
+        "phpstan/phpstan-shim"      : "^0.11.19",
+        "theseer/phpdox"            : "^0.12.0",
+        "composer/composer"         : "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nora\\Skelton\\": "src/"
+        }
+    },
+    "scripts": {
+        "pre-install-cmd": "Nora\\Skelton\\Composer::preInstall",
+        "pre-update-cmd": "Nora\\Skelton\\Composer::preInstall",
+        "post-create-project-cmd": [
+            "Nora\\Skelton\\Composer::postInstall",
+            "composer update"
+        ],
+        "post-install-cmd": ["@setup"],
+        "post-update-cmd": ["@setup"],
+        "setup": ["php bin/setup.php"],
+        "test": ["./tools/phpunit"],
+        "tests": [
+            "@cs",
+            "tools/phpmd src,tests text ./phpmd.xml",
+            "tools/phpstan analyse -l max src tests -c phpstan.neon",
+            "@test"
+        ],
+        "coverage": ["php -dzend_extension=xdebug.so tools/phpunit --coverage-text --coverage-xml=build/coverage"],
+        "cs": [
+            "tools/php-cs-fixer fix -v --dry-run src",
+            "tools/phpcs --standard=phpcs.xml src"
+        ],
+        "analyse": [
+            "tools/phpstan analyse -c phpstan.neon src"
+        ],
+        "dox": [
+            "@coverage",
+            "tools/phploc src/ --log-xml=build/phploc.xml",
+            "tools/phpcs --standard=phpcs.xml --report=xml --report-file=build/phpcs.xml src",
+            "tools/phpdox"
+        ],
+        "cs-fix": [
+            "tools/php-cs-fixer fix -v src",
+            "tools/phpcs --standard=phpcs.xml src"
+        ],
+        "serve": ["php -dzend_extension=xdebug.so -S 0.0.0.0:8080 -t public"]
+    },
+    "scripts-descriptions": {
+        "setup": "Setup",
+        "test": "run phpunit",
+        "coverage": "run phpunit for coverage",
+        "cs": "run phpcs --dry-run",
+        "cs-fix": "run phpcs",
+        "dox": "create documents to build/phpdox/html",
+        "analyse": "run phpstan",
+        "serve": "run php built-in server"
+    },
+    "config": {
+        "process-timeout": 0
+    }
 }
