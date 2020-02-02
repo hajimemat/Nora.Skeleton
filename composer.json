@@ -36,8 +36,12 @@
             "Nora\\Skeleton\\Installer::postInstall",
             "composer update"
         ],
-        "setup": ["php bin/setup.php"],
-        "test": ["./tools/phpunit"],
+        "setup": [
+            "php bin/setup.php"
+        ],
+        "test": [
+            "./tools/phpunit"
+        ],
         "tests": [
             "@cs",
             "tools/phpmd src,tests text ./phpmd.xml",

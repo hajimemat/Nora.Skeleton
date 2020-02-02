@@ -48,17 +48,17 @@ extensions = [
     'sphinxcontrib.phpdomain',
     'sphinx_rtd_theme',
     'sphinx.ext.todo',
-    'sphinx.ext.imgconverter',
-    'gosyu'
+    'sphinx.ext.imgconverter'
 ]
 
 # TODOを設定
 todo_include_todos=True
 
 # 図面設定
-plantjar = os.getenv('PLANTUML')
+#plantjar = os.getenv('PLANTUML')
+plantjar = '/usr/share/java/plantuml/plantuml.jar'
 #plantuml = 'java -jar %s -config ../plantuml.config.pu' % plantjar
-plantuml = 'java -jar %s' % plantjar
+plantuml = 'java -jar %s -config ./plantuml-config.pu' % plantjar
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
